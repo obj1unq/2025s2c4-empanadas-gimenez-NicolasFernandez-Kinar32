@@ -17,6 +17,18 @@ object galvan{
     var deuda = 0
     method cobrarSueldo(){
         cobrado += sueldo
+        if (deuda > 0){
+            var adeudado = deuda
+            deuda = deuda - cobrado
+            cobrado = cobrado - adeudado
+            if(cobrado < 0){
+                cobrado = 0
+            }
+            if(deuda < 0){
+                deuda = 0
+            }
+        }
+        
     }
     method definirSueldo(numero){
         sueldo = numero
@@ -26,6 +38,9 @@ object galvan{
     }
     method totalCobrado(){
         return cobrado
+    }
+    method cuantoDebe(){
+        return deuda
     }
     method gastar(numero){
         cobrado = cobrado - numero
@@ -43,6 +58,7 @@ object baigorria{
     var cobrado = 0
     method cobrarSueldo(){
         cobrado += sueldo
+        empanadasVendidas = 0
     }
     method vender(numero){
         empanadasVendidas += numero
